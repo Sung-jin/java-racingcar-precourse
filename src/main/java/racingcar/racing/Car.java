@@ -31,5 +31,9 @@ public class Car {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("The name of the car must be 5 characters or less.");
         }
+
+        if (name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Empty names are not allowed.");
+        }
     }
 }

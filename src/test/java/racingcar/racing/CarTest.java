@@ -13,6 +13,12 @@ class CarTest {
     }
 
     @Test
+    void 자동차_이름은_빈_값을_허용하지_않는다() {
+        assertThatThrownBy(() -> new Car("   ")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car("")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 자동차는_이동시_4_이상이면_움직이고_미만이면_움직이지_않는다() {
         Car car = new Car("foo");
 

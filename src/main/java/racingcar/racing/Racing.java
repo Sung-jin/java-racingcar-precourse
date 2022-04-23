@@ -1,6 +1,7 @@
 package racingcar.racing;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.common.PositiveNumber;
 import racingcar.functional.LoopHelper;
 
 import java.util.ArrayList;
@@ -12,16 +13,16 @@ public class Racing {
 
     private final List<Car> participants = new ArrayList<>();
 
-    public Racing(String s) {
-        String[] names = s.split(",");
+    public Racing(String participantNames) {
+        String[] names = participantNames.split(",");
 
         for (String name: names) {
             participants.add(new Car(name));
         }
     }
 
-    public void play(int racingPlayCount) {
-        for (int index = 0; index < racingPlayCount; index++) {
+    public void play(PositiveNumber racingPlayCount) {
+        for (int index = 0; index < racingPlayCount.value; index++) {
             LoopHelper.listForEach(participants, (value) -> {
                 value.move(Randoms.pickNumberInRange(MIN_MOVE_NUMBER, MAX_MOVE_NUMBER));
             });

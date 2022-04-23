@@ -1,6 +1,7 @@
 package racingcar.racing;
 
 import org.junit.jupiter.api.Test;
+import racingcar.common.PositiveNumber;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ class RacingTest {
             () -> {
                 Racing racing = new Racing("abc,def,ghi");
 
-                racing.play(4);
+                racing.play(new PositiveNumber(4));
 
                 List<Car> winners = racing.getWinners();
                 assertThat(winners.size()).isEqualTo(1);

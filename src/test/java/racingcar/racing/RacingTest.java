@@ -8,6 +8,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RacingTest {
+    private final int MOVE = 4;
+    private final int STOP = 3;
 
     @Test
     void 레이싱_게임에_참가할_이름을_COMMA_로_구분하여_생성할_수_있다() {
@@ -22,16 +24,19 @@ class RacingTest {
             () -> {
                 Racing racing = new Racing("abc,def,ghi");
 
-                racing.play(2);
+                racing.play(4);
 
                 List<Car> winners = racing.getWinners();
                 assertThat(winners.size()).isEqualTo(1);
 
                 for (Car winner: winners) {
-                    assertThat(winner.getName()).isEqualTo("def");
+                    assertThat(winner.getName()).isEqualTo("ghi");
                 }
             },
-            3, 4, 3, 4, 4, 4
+                STOP, MOVE, STOP,
+                MOVE, MOVE, MOVE,
+                STOP, STOP, MOVE,
+                STOP, STOP, MOVE
         );
     }
 }

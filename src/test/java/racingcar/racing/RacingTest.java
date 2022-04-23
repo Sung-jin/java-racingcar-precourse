@@ -7,6 +7,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingTest {
     private final int MOVE = 4;
@@ -17,6 +18,13 @@ class RacingTest {
         Racing racing = new Racing("abc,def,ghi");
 
         assertThat(racing.participantCount()).isEqualTo(3);
+    }
+
+    @Test
+    void 레이싱_게임_참여자는_2명_이상이어야_한다() {
+        assertThatThrownBy(() -> new Racing("")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Racing("abc")).isInstanceOf(IllegalArgumentException.class);
+
     }
 
     @Test

@@ -11,11 +11,13 @@ import java.util.List;
 public class Racing {
     private final int MIN_MOVE_NUMBER = 0;
     private final int MAX_MOVE_NUMBER = 9;
+    private final int MIN_PARTICIPANT_NUMBER = 2;
 
     private final List<Car> participants = new ArrayList<>();
 
     public Racing(String participantNames) {
         String[] names = participantNames.split(",");
+        validate(names);
 
         for (String name: names) {
             participants.add(new Car(name));
@@ -50,5 +52,11 @@ public class Racing {
 
     public List<Car> getParticipants() {
         return this.participants;
+    }
+
+    private void validate(String[] names) {
+        if (names.length < MIN_PARTICIPANT_NUMBER) {
+            throw new IllegalArgumentException("You must enter at least 2 racing game participants.");
+        }
     }
 }

@@ -4,10 +4,27 @@ public class Car {
     private final int MAX_NAME_LENGTH = 5;
 
     private final String name;
+    private int moveCount = 0;
 
     public Car(String name) {
         validate(name);
         this.name = name;
+    }
+
+    public void move(int moveNumber) {
+        Forward forward = new Forward(moveNumber);
+
+        if (forward.isAvailableForward()) {
+            moveCount++;
+        }
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getMoveCount() {
+        return this.moveCount;
     }
 
     private void validate(String name) {

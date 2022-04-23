@@ -23,9 +23,9 @@ class CarTest {
         Car car = new Car("foo");
 
         car.move(3);
-        assertThat(car.getMoveCount()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
 
         car.move(4);
-        assertThat(car.getMoveCount()).isEqualTo(1);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }

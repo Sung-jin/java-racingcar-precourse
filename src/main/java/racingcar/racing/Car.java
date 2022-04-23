@@ -1,21 +1,24 @@
 package racingcar.racing;
 
+import racingcar.common.Position;
+
 public class Car {
     private final int MAX_NAME_LENGTH = 5;
 
     private final String name;
-    private int moveCount = 0;
+    private final Position position;
 
     public Car(String name) {
         validate(name);
         this.name = name;
+        this.position = new Position();
     }
 
     public void move(int moveNumber) {
         Forward forward = new Forward(moveNumber);
 
         if (forward.isAvailableForward()) {
-            moveCount++;
+            position.forward();
         }
     }
 
@@ -23,8 +26,8 @@ public class Car {
         return this.name;
     }
 
-    public int getMoveCount() {
-        return this.moveCount;
+    public int getPosition() {
+        return this.position.getPosition();
     }
 
     private void validate(String name) {

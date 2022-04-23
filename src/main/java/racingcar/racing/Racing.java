@@ -31,10 +31,10 @@ public class Racing {
 
     public List<Car> getWinners() {
         int furthestDistance = LoopHelper.maxValueInIntegerList(
-            LoopHelper.listMap(participants, Car::getMoveCount)
+            LoopHelper.listMap(participants, Car::getPosition)
         );
 
-        return LoopHelper.listFilter(participants, (value) -> value.getMoveCount() == furthestDistance);
+        return LoopHelper.listFilter(participants, (value) -> value.getPosition() == furthestDistance);
     }
 
     public int participantCount() {

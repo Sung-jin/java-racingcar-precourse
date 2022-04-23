@@ -3,14 +3,11 @@ package racingcar.racing;
 import racingcar.common.Position;
 
 public class Car {
-    private final int MAX_NAME_LENGTH = 5;
-
-    private final String name;
+    private final CarName name;
     private final Position position;
 
     public Car(String name) {
-        validate(name);
-        this.name = name;
+        this.name = new CarName(name);
         this.position = new Position();
     }
 
@@ -23,20 +20,10 @@ public class Car {
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getValue();
     }
 
     public int getPosition() {
         return this.position.getPosition();
-    }
-
-    private void validate(String name) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("The name of the car must be 5 characters or less.");
-        }
-
-        if (name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Empty names are not allowed.");
-        }
     }
 }

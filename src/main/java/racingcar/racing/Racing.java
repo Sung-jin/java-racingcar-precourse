@@ -3,6 +3,7 @@ package racingcar.racing;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.common.PositiveNumber;
 import racingcar.functional.LoopHelper;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +23,17 @@ public class Racing {
     }
 
     public void play(PositiveNumber racingPlayCount) {
+        System.out.println("실행 결과");
+
         for (int index = 0; index < racingPlayCount.value; index++) {
             LoopHelper.listForEach(participants, (value) -> {
                 value.move(Randoms.pickNumberInRange(MIN_MOVE_NUMBER, MAX_MOVE_NUMBER));
             });
+
+            OutputView.RacingMoveResultPrint(this);
         }
+
+        OutputView.RacingEndResultPrint(this);
     }
 
     public List<Car> getWinners() {
@@ -39,5 +46,9 @@ public class Racing {
 
     public int participantCount() {
         return participants.size();
+    }
+
+    public List<Car> getParticipants() {
+        return this.participants;
     }
 }
